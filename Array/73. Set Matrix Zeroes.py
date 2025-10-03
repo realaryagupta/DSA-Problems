@@ -46,3 +46,57 @@ class Solution:
         if first_col_zero:
             for i in range(n):
                 matrix[i][0] = 0
+
+
+# Method - 2
+
+class Solution:
+    def setZeroes(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        # n is number of rows in matrix
+        # m is number of colm in matrix
+        n = len(matrix)
+        m = len(matrix[0])
+
+        # we will check that does the first row consist of 0 in matrix
+        first_row_zero = False
+        for j in range(m):
+            if matrix[0][j] == 0:
+                first_row_zero = True
+                break
+
+        # check does the first colm consist of 0 or not
+        first_col_zero = False
+        for i in range(n):
+            if matrix[i][0] == 0:
+                first_col_zero = True
+                break
+
+        # checking does the first colm contain 0 or not
+        for i in range(1, n):
+            for j in range(1, m):
+                if matrix[i][j] == 0:
+                    matrix[i][0] = 0
+                    matrix[0][j] = 0
+
+        # if we get 0 from row 1 onwards or colm 1 onwards then we will replace that entire row and col with 0's
+        for i in range(1,n):
+            for j in range(1,m):
+                if matrix[i][0] == 0 or matrix[0][j] == 0:
+                    matrix[i][j] = 0
+
+        # change for first row as well
+        if first_row_zero:
+            for j in range(m):
+                matrix[0][j] = 0
+                
+        # change for first colm as well
+        if first_col_zero:
+            for i in range(n):
+                matrix[i][0] = 0 
+
+        return matrix
+    
+        

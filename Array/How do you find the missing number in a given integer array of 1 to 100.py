@@ -19,6 +19,7 @@ def find_missing_number(arr):
 
 # Driver Code
 arr = list(range(1, 101))
+
 # Removing a Random Index so we can later find it which it was 
 random_index = random.randint(0, 99)
 missing_number = arr.pop(random_index)
